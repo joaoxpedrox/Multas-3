@@ -32,7 +32,7 @@ namespace Multas.Models
 
         //FK para agentes 
         [ForeignKey("Agente")]
-        public int AgentesFK { get; set; }
+        public int AgenteFK { get; set; }
         public Agentes Agente { get; set; }
 
      
