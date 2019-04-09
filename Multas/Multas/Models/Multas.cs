@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,23 @@ namespace Multas.Models
 
         public DateTime DataDaMulta { get; set; }
 
+        //Criação das chaves forasteiras 
 
-    }
+        //FK para Viaturas 
+        [ForeignKey("Viatura")]
+        public int ViaturaFK { get; set; } //base de Dados
+        public Viaturas Viatura { get; set; } //c# 
+
+        //FK para o condutor 
+        [ForeignKey("Condutor")]
+        public int CondutorFK { get; set; }
+        public Condutores Condutor { get; set; }
+
+        //FK para agentes 
+        [ForeignKey("Agente")]
+        public int AgentesFK { get; set; }
+        public Agentes Agente { get; set; }
+
+     
+}
 }
