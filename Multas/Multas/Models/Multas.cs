@@ -7,13 +7,16 @@ namespace Multas.Models
 {
     public class Multas
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
-        public DateTime DataMulta { get; set; }
+        public string Infracao { get; set; }
+
+        public string LocalDaMulta { get; set; }
+
         public decimal ValorMulta { get; set; }
-        public string Descricao { get; set; }
 
-        //.. 
+        public DateTime DataDaMulta { get; set; }
+
 
     }
 }

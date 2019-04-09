@@ -7,11 +7,15 @@ namespace Multas.Models
 {
     public class Agentes
     {
-        public int Id { get; set; }
+
+
+        public int ID { get; set; }
 
         public string Nome { get; set; }
+
         public string Esquadra { get; set; }
-        public string Foto { get; set; }
+
+        public string Fotografia { get; set; }
 
 
     }
