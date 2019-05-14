@@ -109,9 +109,22 @@ namespace Multas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Agentes agentes = db.Agentes.Find(id);
-            db.Agentes.Remove(agentes);
+            Agentes agente = db.Agentes.Find(id);
+            try
+            {  db.Agentes.Remove(agente);
             db.SaveChanges();
+            }
+            catch(Exception)
+            { //captura a excessão e processa o código para resolver o problema 
+                //pode haver mais do que um 'catch' associado a um 'try' 
+
+                //enviar mensagem de erro para o utilizador 
+                ModelState.AddModelError("","Ocorreu um erro com a eliminação do Agente " + agente.Nome+ ". Provavelmente relacionado com o facto do agente ter emitido multas...");
+                //devolver os dados ao Agente à View 
+                return View(agente); 
+
+            }
+            //redireciona o interface para a view Index associada ao controller Agentes
             return RedirectToAction("Index");
         }
 
