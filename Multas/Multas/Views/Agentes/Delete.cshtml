@@ -1,21 +1,22 @@
 ﻿@model Multas.Models.Agentes
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Remover Agente";
 }
 
-<h2>Agentes</h2>
+<h2>Remover um Agente da Base de Dados</h2>
 
-<h3>Deseja remover este Agente?</h3>
+<h3>Tem a certeza que quer remover este agente?</h3>
 <div>
+
     <hr />
+
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<br/>
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Nome)
         </dd>
@@ -23,7 +24,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Esquadra)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Esquadra)
         </dd>
@@ -31,9 +31,10 @@
         <dt>
             @Html.DisplayNameFor(model => model.Fotografia)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Fotografia)
+            @*     <img src="~/Imagens/@Html.DisplayFor(model => model.Fotografia)" alt="" title="" width="150"/><br />*@
+            <img src="~/Imagens/@Model.Fotografia" alt="" title="" width="150" />
+
         </dd>
 
     </dl>
@@ -43,8 +44,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Remover" class="btn btn-default" /> |
-            @Html.ActionLink("Regressar à listagem", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
