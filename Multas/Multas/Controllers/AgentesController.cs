@@ -11,11 +11,21 @@ using Multas.Models;
 
 namespace Multas.Controllers
 {
+    [Authorize] //Obriga a que os utilizadores estejam autenticados 
+
     public class AgentesController : Controller
     {
         private MultasDB db = new MultasDB();
 
         // GET: Agentes
+        [Authorize(Roles = "RecursosHumanos, Agentes")] //Além de autenticado,
+                                                        //só os utilizadores do tipo RecursosHumanos ou Agentes têm acesso 
+                                                        //só precisa de pertencer a uma delas.. 
+                                                        //»»»»»»»»»»»»»»»»»»»»»»»»»««««««««««««««««««««««««
+
+        //Exemplo de uma situação em que é necessário ser GestorMultas e Agente . 
+        //[Authorize(Roles = "RecursosHumanos")]
+        //  [Authorize(Roles = "Agentes")]
         public ActionResult Index()
         {
 
@@ -24,7 +34,10 @@ namespace Multas.Controllers
             return View(db.Agentes.ToList());
         }
 
-        // GET: Agentes/Details/5
+
+
+        // GET: Agentes/Details/5        
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,6 +61,7 @@ namespace Multas.Controllers
         /// mostra a view para carregar os dados de um novo Agente
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "RecursosHumanos, Agentes")]
         public ActionResult Create()
         {
             return View();
@@ -63,6 +77,7 @@ namespace Multas.Controllers
         /// <param name="agente">dados do novo Agente</param>
         /// <param name="fotografia">ficheiro com a foto do novo Agente</param>
         /// <returns></returns>
+        [Authorize(Roles = "RecursosHumanos")]
 
         [HttpPost]
         [ValidateAntiForgeryToken]
